@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CarbonAir Energy | Contato</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/phone.css">
+    <!-- <link rel="stylesheet" href="select.css"> -->
+    <script src="https://cdn.jsdelivr.net/gh/askask11/multi-language@0.1.4/dist/multi-language.min.js" integrity="sha256-xL5PbSBwYLKYaUvdDP2S/lnF9s3oAPm/92GnACZBe2c=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/parallax/parallax.js"></script>
+</head>
+
+<body>
+    <section id="header">
+            <div id="home-header">
+                <div id="home-brand">
+                    <a href="index.html">
+                        <img id="logo2" src="img/logo4.png" />
+                    </a>
+                </div>
+                <div id="header-menu">
+                    <a href="index.html">INÍCIO</a>
+                    <a href="sobre.html">EMPRESA</a>
+                    <a href="servicos.html">SERVIÇOS</a>
+                    <a href="equipe.html">EQUIPE</a>
+                    <a href="contato.html">CONTATO</a>
+                </div>
+                <div id="menu2">
+                    <a href="http://instagram.com/carbonairenergy"><img src="img/instagram.svg" /></a>
+                    <a href="http://medium.com/@carbonairenergy"><img src="img/medium.svg" /></a>
+                    <a href="https://www.linkedin.com/company/carbonairenergy/"><img src="img/linkedin.svg" /></a>
+                    <select id="languages">
+                        <option value="pt">
+                            PT
+                        </option>
+                        <option value="en">
+                            EN
+                        </option>
+                      </select>
+            </div>
+
+            
+                <nav role="navigation">
+                    <div id="menuToggle">
+                    <input type="checkbox" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    <ul id="menu-m">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Empresa</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="equipe.html">Equipe</a></li>
+                        <li><a href="noticias.html">Notícias</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                </nav>
+
+                </div>
+                <div id="title">
+                    <h1>Contato</h1>
+                </div>
+    </section>
+    <section id="contact" style="background-color: #fff; padding: 0 0 50px;">
+        <div class="container" style="background-color: #fff; padding: 30px 30px 10px; margin-top: 0; padding: 0;">
+            <div id="retornoHTML">
+                <form id="form">
+                    <div class="form-l">
+                        <input type="text" name="name" id="name" placeholder="Nome*"><br>
+                        <input type="text" name="email" id="email" placeholder="E-mail*"><br>
+                        <input type="text" name="celular" id="celular" onkeyup="mascaraFone(event)" placeholder="Celular"><br>
+                    </div>
+                    <div class="form-r">
+                        <textarea name="message" id="message" placeholder="Mensagem*"></textarea>
+                    </div>
+                </form>
+                    <div class="primary-btn" name="submit" id="submit">Enviar mensagem</div>
+                    <label id="loader" style="margin-top: 20px;"></label>
+                    <label id="info" style="margin-top: 20px;"></label>
+            </div>
+            <div id="infos"><span style="color: var(--text);">+55 21 99355-8028</span>   <span style="color: var(--text);">|</span>   <span style="color: var(--text);">atendimento@carbonairenergy.com.br</span> <span style="color: var(--text);">|</span> <span style="color: var(--text);">Rua Hélio de Almeida, S/N, Prédio 1, Sala 10</span></div>
+            </div>
+    </section>
+    <section id="contact" style="padding-top: 30px;">
+        <div class="container">
+            <img src="img/logo4.png" /><br>
+            <span id="footer">CARBONAIR ENERGY. TODOS OS DIREITOS RESERVADOS. 2022. DESENVOLVIDO POR NETUNO.DIGITAL</span>
+        </div>
+    </section>
+    <script id="translation-sheet" type="application/json">
+        [   {
+            "id":"c1",
+            "langs":{
+                "pt":"SOLUÇÕES PARA CAPTURA E UTILIZAÇÃO DE CO2",
+                "en":"SOLUTIONS FOR CO2 CAPTURE AND USE"
+            }
+        },{
+            "id":"c2",
+            "langs":{
+            "pt":"Nossos Valores",
+            "en":"Our Values"
+            }
+        }
+        ]
+    </script>
+    <script>
+        // Set multilanguage
+        var lang = window.location.pathname.split("/")[1]
+        var json = JSON.parse(document.getElementById("translation-sheet").innerHTML);
+        var translator = new MultiLanguage("pt",select=document.getElementById("languages"));
+        var xhr = new XMLHttpRequest();  //Create an xhr instanc
+        xhr.open("locale.json","GET"); // Define target file and HTTP method to use.
+        xhr.onreadystatechange=(e)=>{
+        if(xhr.readyState === 4 && xhr.status === 200)
+        {
+            var jsonResponse = JSON.parse(xhr.responseText); // get response text and parse it into JSON.
+            translator.addSheet(jsonResponse);
+        }
+        }
+        xhr.send()
+    </script>
+    <script>
+        $.ajax({ 
+            type: 'GET', 
+            url: 'rss.php', 
+            data: { get_param: 'value' }, 
+            dataType: 'json',
+            success: function (data) {
+                var news = data;
+                console.log(news)
+                $("#n1 h3").html(news[0].title)
+                $("#n2 h3").html(news[1].title)
+                $("#n3 h3").html(news[2].title)
+
+                $("#n1 p").html(news[0].descript.substring(0,300)+"...<br><a href='"+news[0].link+"'><span>Ler mais</span></a>")
+                $("#n2 p").html(news[1].descript.substring(0,300)+"...<br><a href='"+news[1].link+"'><span>Ler mais</span></a>")
+                $("#n3 p").html(news[2].descript.substring(0,300)+"...<br><a href='"+news[2].link+"'><span>Ler mais</span></a>")
+            }
+        });
+        // Funtion to get random int
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+        // Random home background
+        $("#home").attr("data-image-src","img/bg"+getRandomInt(1,4).toString()+".jpg")
+
+        // Get medium feed
+        // $.ajax({
+        // type: 'GET',
+        //     dataType:"json",
+        // url: 'rss.php',
+        // headers:{         
+        //     'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBWZXIiOiIwLjAuMCIsImV4cCI6NDcyNjM4OTEyMiwibG9jYWxlIjoiIiwibWFzdGVyVmVyIjoiIiwicGxhdGZvcm0iOiIiLCJwbGF0Zm9ybVZlciI6IiIsInVzZXJJZCI6IiJ9.QIZbmB5_9Xlap_gDhjETfMI6EAmR15yBtIQkWFWJkrg',
+            
+        // },
+        // success: function (data, status, xhr) {
+        //     var news = data.items;
+        //     console.log(news)
+        //     $("#n1 h3").html(news[0].title)
+        //     $("#n2 h3").html(news[1].title)
+        //     $("#n3 h3").html(news[2].title)
+
+        //     $("#n1 p").html(news[0].description.substring(0,300)+"...<br><a href='"+news[0].link+"'><span>Ler mais</span></a>")
+        //     $("#n2 p").html(news[1].description.substring(0,300)+"...<br><a href='"+news[1].link+"'><span>Ler mais</span></a>")
+        //     $("#n3 p").html(news[2].description.substring(0,300)+"...<br><a href='"+news[2].link+"'><span>Ler mais</span></a>")
+        // }
+        // });
+    </script>
+    <script>
+        // Menu scroll animation
+        window.onscroll = function() {scrollFunction()};
+            function scrollFunction() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 120) {
+                document.getElementById("menuToggle").style.background = "#2F6185";
+            } else {
+                document.getElementById("menuToggle").style.background = "transparent";
+            }
+            }
+    </script>
+    <script>
+        $(document).ready(function() {
+        
+        var form = $('#form'),
+            email = $('#email'),
+            name = $('#name'),
+            message = $('#message'),
+            info = $('#info'),
+            loader = $('#loader'),
+            submit = $("#submit");
+        
+        form.on('input', '#email, #subject, #message', function() {
+        $(this).css('border-color', '');
+        info.html('').slideUp();
+        });
+        
+        submit.on('click', function(e) {
+        info.html('Enviando mensagem...').css('color', 'red').slideDown();
+        e.preventDefault();
+        if(validate()) {
+            $.ajax({
+            type: "POST",
+            url: "sendmail.php",
+            data: form.serialize(),
+            dataType: "json"
+            }).done(function(data) {
+            if(data.success) {
+                email.val('');
+                name.val('');
+                message.val('');
+                info.html('Message enviada!').css('color', 'green').slideDown();
+            } else {
+                info.html('Ocorreu um erro no envio da mensagem.').css('color', 'red').slideDown();
+            }
+            });
+        }
+        });
+        
+        function validate() {
+        var valid = true;
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        
+        if(!regex.test(email.val())) {
+            email.css('border-color', 'red');
+            valid = false;
+        }
+        if($.trim(name.val()) === "") {
+            name.css('border-color', 'red');
+            valid = false;
+        }
+        if($.trim(message.val()) === "") {
+            message.css('border-color', 'red');
+            valid = false;
+        }
+        
+        return valid;
+        }
+
+        });
+
+    </script>
+    <script>
+          function mascaraFone(event) {
+    var valor = document.getElementById("celular").attributes[0].ownerElement['value'];
+    var retorno = valor.replace(/\D/g, "");
+    retorno = retorno.replace(/^0/, "");
+    if (retorno.length > 10) {
+      retorno = retorno.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+    } else if (retorno.length > 5) {
+      if (retorno.length == 6 && event.code == "Backspace") { 
+        // necessário pois senão o "-" fica sempre voltando ao dar backspace
+        return; 
+      } 
+      retorno = retorno.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+    } else if (retorno.length > 2) {
+      retorno = retorno.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+    } else {
+      if (retorno.length != 0) {
+        retorno = retorno.replace(/^(\d*)/, "($1");
+      }
+    }
+    document.getElementById("celular").attributes[0].ownerElement['value'] = retorno;
+  }
+    </script>
+</body>
+
+</html>
